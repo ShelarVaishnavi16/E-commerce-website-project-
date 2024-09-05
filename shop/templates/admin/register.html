@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<div class="container">
+
+
+    {% from "_formhelpers.html" import render_field %}
+<div class="text-center">Register</div>
+
+
+<form method="post" enctype="multipart/form-data">
+  <div>
+    {{ render_field(form.name,class="form-control") }}
+    {{ render_field(form.username,class="form-control") }}
+    {{ render_field(form.email,class="form-control") }}
+    {{ render_field(form.password, id="password", class="form-control") }}
+    {{ render_field(form.confirm,class="form-control") }}
+
+      <input type="file" name="photo">
+  </div>
+
+    <p><input type=submit value="Register" class="btn btn-info mt-2"></p>
+</form>
+</div>
+
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  document.querySelector("form").addEventListener("submit", function(event) {
+    var password = document.getElementById("password").value;
+    var uppercaseRegex = /[A-Z]/;
+    var lowercaseRegex = /[a-z]/;
+    var digitRegex = /[0-9]/;
+    var specialCharRegex = /[!@#$%^&*(),.?":{}|<>]/;
+
+    if (!uppercaseRegex.test(password)) {
+      alert("Password must contain at least one uppercase letter.");
+      event.preventDefault();
+      return;
+    }
+
+    if (!lowercaseRegex.test(password)) {
+      alert("Password must contain at least one lowercase letter.");
+      event.preventDefault();
+      return;
+    }
+
+    if (!digitRegex.test(password)) {
+      alert("Password must contain at least one digit.");
+      event.preventDefault();
+      return;
+    }
+
+    if (!specialCharRegex.test(password)) {
+      alert("Password must contain at least one special character.");
+      event.preventDefault();
+      return;
+    }
+  });
+});
+</script>
+{% endblock %}

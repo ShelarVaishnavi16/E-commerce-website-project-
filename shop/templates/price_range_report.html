@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Price Ranges Report</title>
+    <!-- Include Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>Product Price Ranges Report</h1>
+    <!-- Canvas element to render the pie chart with fixed size -->
+    <canvas id="pieChart" width="200" height="200"></canvas>
+
+    <script>
+        // Get data from Flask and create the pie chart
+        var ctx = document.getElementById('pieChart').getContext('2d');
+        var pieChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ['Below $100', '$100 - $1000', 'Above $1000'],
+                datasets: [{
+                    label: 'Product Price Ranges',
+                    data: {{ percentages | safe }},
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.5)',
+                        'rgba(54, 162, 235, 0.5)',
+                        'rgba(255, 206, 86, 0.5)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: false, // Ensure chart does not resize
+                maintainAspectRatio: false,
+                // Set a fixed size for the chart with a radius of 3cm
+                width: 200,
+                height: 200
+            }
+        });
+    </script>
+</body>
+</html>

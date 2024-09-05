@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6" style="margin-top: 50px; border: 3px solid black; padding: 20px;">
+            <div class="text-center bg-info p-2 h4">Login</div>
+            {% from "_formhelpers.html" import render_field %}
+
+            <form method="post">
+                {{ form.csrf_token }}
+                <div style="margin-bottom: 20px;">
+                    {{ render_field(form.email, class="form-control") }}
+                    {{ render_field(form.password, class="form-control") }}
+                </div>
+                <p><input type="submit" value="Login" class="btn-info" style="width: 100%;"></p>
+            </form>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>
+{% endblock %}

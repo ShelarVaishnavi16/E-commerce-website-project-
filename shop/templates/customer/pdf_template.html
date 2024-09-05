@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Content</title>
+    <!-- Include Bootstrap CSS if needed -->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
+</head>
+<body>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-sm">
+                    <thead>
+                        <tr>
+                            <th>Sr no</th>
+                            <th>Image</th>
+                            <th>Name</th>
+                            <th>Color</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Discount</th>
+                            <th>Subtotal</th>
+                            <th>Update</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Loop through your data here -->
+                        <!-- Example: -->
+                        <!-- {% for key, product in session['Shoppingcart'].items() %} -->
+                        <!-- <tr> -->
+                        <!--     <td>{{loop.index}}</td> -->
+                        <!--     <td><img src="{{url_for('static', filename='images/' + product.image)}}" alt="{{product.name}}" width="50" height="50"></td> -->
+                        <!--     <td>{{product.name}}</td> -->
+                        <!--     <td>{{product.color}}</td> -->
+                        <!--     <td>{{product.price}}</td> -->
+                        <!--     <td>{{product.quantity}}</td> -->
+                        <!--     <td>{{product.discount}}</td> -->
+                        <!--     <td>{{product.subtotal}}</td> -->
+                        <!--     <td>Update Button</td> -->
+                        <!--     <td>Delete Button</td> -->
+                        <!-- </tr> -->
+                        <!-- {% endfor %} -->
+                    </tbody>
+                </table>
+                <table class="table table-sm">
+                    <tr>
+                        <td><a href="/" class="btn btn-sm btn-primary">Continue with shopping</a></td>
+                        <td><a href="{{url_for('get_order')}}" class="btn btn-sm btn-success">Order now</a></td>
+                        <td colspan="3"><h4>Tax: &#x20B9;{{tax}}</h4></td>
+                        <td colspan="3"><h4>Grand total: &#x20B9;{{grandtotal}}</h4></td>
+                        <td><a href="{{url_for('clearcart')}}" class="btn btn-danger btn-sm float-right">Clear cart</a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

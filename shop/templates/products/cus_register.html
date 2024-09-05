@@ -1,0 +1,103 @@
+{% extends 'layout.html' %}
+{% block head %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .container {
+            margin-top: 50px;
+        }
+        .bg-info {
+            background-color: #17a2b8 !important;
+            color: white;
+        }
+        .text-center {
+            text-align: center;
+        }
+        .form-control {
+            margin-bottom: 10px;
+        }
+        .btn-info {
+            background-color: #17a2b8 !important;
+            border-color: #17a2b8 !important;
+            color: white;
+        }
+        .custom-form {
+            border: 2px solid #17a2b8;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+            padding: 30px;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+{% from "_formhelpers.html" import render_field %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <h1 class="bg-info text-center">Register</h1>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+    <form action="" method="post" class="custom-form">
+
+        {{ form.csrf_token }}
+        <div class="row">
+            <div class="col-md-6">
+                {{ render_field(form.name, class="form-control", placeholder="Full Name")}}
+                {{ render_field(form.username, class="form-control", placeholder="Username")}}
+                {{ render_field(form.email, class="form-control", placeholder="Email Address")}}
+                {{ render_field(form.contact, class="form-control", placeholder="Contact Number")}}
+                {{ render_field(form.password, class="form-control", placeholder="Password")}}
+                {{ render_field(form.confirm, class="form-control", placeholder="Confirm Password")}}
+                {{ form.profile()}}
+            </div>
+            <div class="col-md-6">
+                {{ render_field(form.country, class="form-control", placeholder="Country")}}
+                {{ render_field(form.state, class="form-control", placeholder="State")}}
+                {{ render_field(form.city, class="form-control", placeholder="City")}}
+                {{ render_field(form.address, class="form-control", placeholder="Address")}}
+                {{ render_field(form.zipcode, class="form-control", placeholder="Zipcode")}}
+                {{ form.submit(class="btn btn-lg btn-info btn-block")}}
+            </div>
+        </div>
+    </form>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  document.querySelector("form").addEventListener("submit", function(event) {
+    var password = document.getElementById("password").value;
+    var uppercaseRegex = /[A-Z]/;
+    var lowercaseRegex = /[a-z]/;
+    var digitRegex = /[0-9]/;
+    var specialCharRegex = /[!@#$%^&*(),.?":{}|<>]/;
+
+    if (!uppercaseRegex.test(password)) {
+      alert("Password must contain at least one uppercase letter.");
+      event.preventDefault();
+      return;
+    }
+
+    if (!lowercaseRegex.test(password)) {
+      alert("Password must contain at least one lowercase letter.");
+      event.preventDefault();
+      return;
+    }
+
+    if (!digitRegex.test(password)) {
+      alert("Password must contain at least one digit.");
+      event.preventDefault();
+      return;
+    }
+
+    if (!specialCharRegex.test(password)) {
+      alert("Password must contain at least one special character.");
+      event.preventDefault();
+      return;
+    }
+  });
+});
+</script>
+
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+{% block body %}
+% from "_formhelpers.html" import render_field %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-2">
+            <h1 class="bd-info text-center">Register</h1>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+    <form action="" methods="post">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-4">
+                {{render_field(form.name)}}
+                {{render_field(form.username)}}
+                {{render_field(form.email)}}
+                {{render_field(form.password)}}
+                {{render_field(form.confirm)}}
+            </div>
+            <div class="col-md-4"></div>
+            <div class="col-md-2"></div>
+        </div>
+    </form>
+</div>
+{% endblock %}
