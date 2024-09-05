@@ -1,7 +1,7 @@
 # E-commerce-website-project-
 
-<h1>Venue Booking System</h1>
-    <p>This is a full-featured e-commerce web application . The platform allows users to browse products, add items to their cart, and make purchases. It also includes admin functionalities for managing products, orders, and users.</p>
+
+<p>This is a full-featured e-commerce web application . The platform allows users to browse products, add items to their cart, and make purchases. It also includes admin functionalities for managing products, orders, and users.</p>
   <p>
     <h2>Key Features</h2>
     <ul>
